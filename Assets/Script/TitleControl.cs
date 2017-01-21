@@ -11,46 +11,46 @@ public class TitleControl : MonoBehaviour {
 	public GameObject ButtRandom;
 	public GameObject ButtNyanCat;
 	public GameObject Butt5th;
-	public int songSelect;
+	public int songSelect = 0;
 
-	public int HighRandom=0;
-	public int HighNyanCat=0;
-	public int High5th=0;
+	public PersistantData Keeping;
 
 
 	void Start () {
-		songSelect = 0;
+		Keeping = Object.FindObjectOfType<PersistantData>();
+		songSelect = Keeping.ReturnSong ();
+		UpdateSong();
+	}
+
+	void UpdateSong(){
+		ButtRandom.SetActive (false);
+		ButtNyanCat.SetActive (false);
+		Butt5th.SetActive (false);
+
+		//random -> Nyan -> 5th -> random
+		if (songSelect == 0)
+			ButtRandom.SetActive (true);
+		if (songSelect == 1)
+			ButtNyanCat.SetActive (true);
+		if (songSelect == 2)
+			Butt5th.SetActive (true);
 	}
 	
 	void PlayClicked(){
-		Debug.Log("PLAY");
+		//Debug.Log("PLAY");
 		SceneManager.LoadScene ("Mousezart", LoadSceneMode.Single);
 	}
 	void ScoreClicked(){
-		Debug.Log("SCORE");
+		//Debug.Log("SCORE");
+		SceneManager.LoadScene ("HighScore", LoadSceneMode.Single);
 	}
 	void LevelClicked(){
-		Debug.Log("LEVEL SWAP");
-		//random -> Nyan -> 5th -> random
+		//Debug.Log("LEVEL SWAP");
 
-		if (ButtRandom.activeSelf == true) {
-			ButtRandom.SetActive (false);
-			ButtNyanCat.SetActive (true);
-			Butt5th.SetActive (false);
-			songSelect = 1;
-		}
-		else if (ButtNyanCat.activeSelf == true ){
-			ButtRandom.SetActive (false);
-			ButtNyanCat.SetActive (false);
-			Butt5th.SetActive (true);
-			songSelect = 2;
-		}
-		else if (Butt5th.activeSelf == true){
-			ButtRandom.SetActive (true);
-			ButtNyanCat.SetActive (false);
-			Butt5th.SetActive (false);
-			songSelect = 0;
-		}
+
+		songSelect = Keeping.SwitchSong ();
+		Debug.Log (songSelect);
+		UpdateSong();
 	}
 
 
@@ -67,6 +67,8 @@ public class TitleControl : MonoBehaviour {
 					ScoreClicked ();
 				else if (hitIt.transform.gameObject.name == "Level")
 					LevelClicked ();
+				else if(hitIt.transform.gameObject.name == "Exit")
+					Application.Quit();
 			}
 
 		}
