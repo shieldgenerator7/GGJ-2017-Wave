@@ -12,12 +12,11 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         instance = this;
-        catSpawner = new CatSpawner();
+        catSpawner = GetComponent<CatSpawner>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //catSpawner.spawnCats();
 	}
 
     //

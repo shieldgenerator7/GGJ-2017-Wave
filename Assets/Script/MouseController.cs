@@ -19,6 +19,7 @@ public class MouseController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //Detect Inputs
         bool buttonInput = Input.GetButton(buttonName);
         bool mouseInput = false;
         if (Input.GetMouseButton(0))
@@ -42,6 +43,7 @@ public class MouseController : MonoBehaviour {
                 }
             }
         }
+        //Spawn Toy
 		if (buttonInput || mouseInput || touchInput)
         {
             if (nextToySpawn < Time.time)
