@@ -38,6 +38,7 @@ public class CatController : MonoBehaviour {
     public void takeHit()//kitty has toy, so it retreats
     {
         retreating = true;
+        GetComponent<BoxCollider2D>().enabled = false;
         speed *= -2;
     }
 }
