@@ -14,7 +14,7 @@ public class MouseController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        transform.position = new Vector3(transform.position.x, GameManager.getLanePositionY(laneId));
 	}
 	
 	// Update is called once per frame

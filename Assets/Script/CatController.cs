@@ -13,8 +13,8 @@ public class CatController : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-		
-	}
+        transform.position = new Vector3(transform.position.x, GameManager.getLanePositionY(laneId));
+    }
 
     public void init(float speed, int laneId)
     {
