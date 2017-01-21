@@ -6,9 +6,12 @@ public class MouseController : MonoBehaviour {
 
     public GameObject toyPrefab;//the prefab for the toy this mouse spawns
     public int laneId;//the id of the lane this mouse occupies
+    public float toySpawnDelay = 0.5f;//the minimum time between toy spawns (seconds)
 
-	// Use this for initialization
-	void Start () {
+    private float nextToySpawn = 0;//the soonest this mouse can spawn a toy
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,11 +19,14 @@ public class MouseController : MonoBehaviour {
 	void Update () {
 		if (Input.GetButton("NoteE"))
         {
-            //transform.position += new Vector3(1, 0);
-            GameObject newToy = Instantiate(toyPrefab);
-            ToyChecker tc = newToy.GetComponent<ToyChecker>();
-            tc.init(transform.position);
-            tc.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 100));
+            if (nextToySpawn < Time.time)
+            {
+                nextToySpawn = Time.time + toySpawnDelay;
+                GameObject newToy = Instantiate(toyPrefab);
+                ToyChecker tc = newToy.GetComponent<ToyChecker>();
+                tc.init(transform.position);
+                tc.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 100));
+            }
         }
 	}
 }
