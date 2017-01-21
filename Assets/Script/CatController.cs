@@ -40,6 +40,7 @@ public class CatController : MonoBehaviour {
         retreating = true;
         GetComponent<BoxCollider2D>().enabled = false;
         speed *= -2;
+        NoteRecorder.recordNote(laneId);
     }
 
     void OnTriggerEnter2D(Collider2D coll)
