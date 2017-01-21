@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         instance = this;
         catSpawner = GetComponent<CatSpawner>();
         level = new Level();
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour {
 
     public static void resetLevel()
     {
+        SceneManager.LoadScene("Mousezart", LoadSceneMode.Single);
         gameInProgress = true;
         instance.catSpawner.spawnCats(true);
         //despawn all cats
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour {
 
     public static void levelFailed()
     {
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         gameInProgress = false;
         instance.catSpawner.spawnCats(false);
     }
