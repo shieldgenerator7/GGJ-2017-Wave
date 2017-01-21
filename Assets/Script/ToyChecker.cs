@@ -23,16 +23,4 @@ public class ToyChecker : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Cat")
-        {
-            CatController cc = coll.gameObject.GetComponent<CatController>();
-            if (!cc.retreating)
-            {
-                cc.takeHit();
-            }
-        }
-    }
 }

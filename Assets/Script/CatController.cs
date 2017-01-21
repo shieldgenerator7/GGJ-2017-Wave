@@ -41,4 +41,13 @@ public class CatController : MonoBehaviour {
         GetComponent<BoxCollider2D>().enabled = false;
         speed *= -2;
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Toy")
+        {
+            takeHit();
+            Destroy(coll.gameObject);
+        }
+    }
 }
