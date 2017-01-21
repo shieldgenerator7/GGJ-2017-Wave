@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
     public float CEILING = 5;//the ceiling off which all lanes "hang off" in terms off finding their y coordinates
+
+    public static bool gameInProgress = true;
 
     private static GameManager instance;
     private CatSpawner catSpawner;//the script that spawns cats
@@ -21,11 +24,32 @@ public class GameManager : MonoBehaviour {
         {
             Application.Quit();
         }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!gameInProgress)
+            {
+                resetLevel();
+            }
+        }
+    }
+
+    public static void resetLevel()
+    {
+        gameInProgress = true;
+        instance.catSpawner.spawnCats(true);
+        //despawn all cats
+        foreach (GameObject go in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (go.tag == "Cat")
+            {
+                Destroy(go);
+            }
+        }
     }
 
     public static void levelFailed()
     {
-        MouseController.gameInProgress = false;
+        gameInProgress = false;
         instance.catSpawner.spawnCats(false);
     }
 

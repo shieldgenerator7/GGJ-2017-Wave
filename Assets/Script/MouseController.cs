@@ -9,8 +9,6 @@ public class MouseController : MonoBehaviour {
     public float toySpawnDelay = 0.5f;//the minimum time between toy spawns (seconds)
     public GameObject tapArea;//the tap area that this mouse responds to
 
-    public static bool gameInProgress = true;//mice can shoot toys when the game is in progress
-
     private float nextToySpawn = 0;//the soonest this mouse can spawn a toy
 
     // Use this for initialization
@@ -20,7 +18,7 @@ public class MouseController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!gameInProgress)
+        if (!GameManager.gameInProgress)
         {
             return;//can't do anything if the game isn't in progress
         }
