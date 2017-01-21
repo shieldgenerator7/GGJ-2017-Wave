@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseController : MonoBehaviour {
-
-    public GameObject toyPrefab;//the prefab for the toy this mouse spawns
+    
     public int laneId;//the id of the lane this mouse occupies
-    public float toySpawnDelay = 0.5f;//the minimum time between toy spawns (seconds)
     public string buttonName;//the name of the button that controls this mouse
+    public float toySpawnDelay = 0.5f;//the minimum time between toy spawns (seconds)
     public GameObject tapArea;//the tap area that this mouse responds to
 
     private float nextToySpawn = 0;//the soonest this mouse can spawn a toy
@@ -19,6 +18,10 @@ public class MouseController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!GameManager.gameInProgress)
+        {
+            return;//can't do anything if the game isn't in progress
+        }
         //Detect Inputs
         bool buttonInput = Input.GetButton(buttonName);
         bool mouseInput = false;
@@ -49,11 +52,10 @@ public class MouseController : MonoBehaviour {
             if (nextToySpawn < Time.time)
             {
                 nextToySpawn = Time.time + toySpawnDelay;
-                GameObject newToy = Instantiate(toyPrefab);
-                ToyChecker tc = newToy.GetComponent<ToyChecker>();
-                tc.init(transform.position);
-                tc.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 100));
+                ToySpawner.spawnToy(transform.position);
             }
         }
 	}
+
+    
 }

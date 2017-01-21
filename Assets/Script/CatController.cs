@@ -27,7 +27,7 @@ public class CatController : MonoBehaviour {
         transform.position += new Vector3(-speed*Time.deltaTime, 0);//move kitty
         if (transform.position.x < FINISH_LINE)
         {
-            //GameManager.levelFailed();
+            GameManager.levelFailed();
         }
         else if (retreating && transform.position.x > RETREAT_LINE)
         {
@@ -40,5 +40,15 @@ public class CatController : MonoBehaviour {
         retreating = true;
         GetComponent<BoxCollider2D>().enabled = false;
         speed *= -2;
+        NoteRecorder.recordNote(laneId);
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Toy")
+        {
+            takeHit();
+            Destroy(coll.gameObject);
+        }
     }
 }
