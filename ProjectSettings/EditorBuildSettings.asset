@@ -6,4 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Splash.unity
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+  - enabled: 1
+    path: Assets/Scenes/Mousezart.unity
+  - enabled: 1
+    path: Assets/Scenes/HighScore.unity
+  - enabled: 0
     path: Assets/Mousezart.unity
