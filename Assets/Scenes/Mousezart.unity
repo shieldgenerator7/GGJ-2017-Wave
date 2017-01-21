@@ -478,10 +478,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8042d729d66398349822d6eb47041c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toyPrefab: {fileID: 1158157173373158, guid: 16523f07410abb848804f1c361fa4120, type: 2}
   laneId: 1
-  toySpawnDelay: 0.5
   buttonName: NoteE
+  toySpawnDelay: 0.5
+  toySpawnVelocity: {x: 1000, y: 100}
+  toyPrefab: {fileID: 1158157173373158, guid: 16523f07410abb848804f1c361fa4120, type: 2}
   tapArea: {fileID: 971824314}
 --- !u!1 &606088224
 GameObject:
@@ -831,11 +832,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4293372550300888, guid: 16523f07410abb848804f1c361fa4120, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.41
+      value: -3.869
       objectReference: {fileID: 0}
     - target: {fileID: 4293372550300888, guid: 16523f07410abb848804f1c361fa4120, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.38
+      value: 4.105
       objectReference: {fileID: 0}
     - target: {fileID: 4293372550300888, guid: 16523f07410abb848804f1c361fa4120, type: 2}
       propertyPath: m_LocalPosition.z

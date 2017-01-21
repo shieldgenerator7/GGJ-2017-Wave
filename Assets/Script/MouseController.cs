@@ -50,11 +50,17 @@ public class MouseController : MonoBehaviour {
             if (nextToySpawn < Time.time)
             {
                 nextToySpawn = Time.time + toySpawnDelay;
-                GameObject newToy = Instantiate(toyPrefab);
-                ToyChecker tc = newToy.GetComponent<ToyChecker>();
-                tc.init(transform.position);
-                tc.GetComponent<Rigidbody2D>().AddForce(toySpawnVelocity);
+                spawnToy();
             }
         }
 	}
+
+    public void spawnToy()
+    {
+        GameObject newToy = Instantiate(toyPrefab);
+        ToyChecker tc = newToy.GetComponent<ToyChecker>();
+        tc.init(transform.position);
+        tc.GetComponent<Rigidbody2D>().AddForce(toySpawnVelocity);
+
+    }
 }
