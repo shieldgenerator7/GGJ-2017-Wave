@@ -27,7 +27,7 @@ public class CatController : MonoBehaviour {
         transform.position += new Vector3(-speed*Time.deltaTime, 0);//move kitty
         if (transform.position.x < FINISH_LINE)
         {
-            //GameManager.levelFailed();
+            GameManager.levelFailed();
         }
         else if (retreating && transform.position.x > RETREAT_LINE)
         {

@@ -8,6 +8,7 @@ public class CatSpawner : MonoBehaviour
     public GameObject catPrefab;//the prefab used to spawn cats
 
     private float nextCatSpawn = 0;//the soonest a cat can spawn
+    private bool shouldSpawnCats = true;
 
     // Use this for initialization
     void Start()
@@ -18,12 +19,20 @@ public class CatSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nextCatSpawn < Time.time)
+        if (shouldSpawnCats)
         {
-            nextCatSpawn = Time.time + catSpawnDelay;
-            int randLane = Random.Range(1, 9);
-            CatController cc = Instantiate(catPrefab).GetComponent<CatController>();
-            cc.init(Random.Range(1,3), randLane);
+            if (nextCatSpawn < Time.time)
+            {
+                nextCatSpawn = Time.time + catSpawnDelay;
+                int randLane = Random.Range(1, 9);
+                CatController cc = Instantiate(catPrefab).GetComponent<CatController>();
+                cc.init(Random.Range(1, 3), randLane);
+            }
         }
+    }
+
+    public void spawnCats(bool spawn)
+    {
+        shouldSpawnCats = spawn;
     }
 }

@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public static void levelFailed()
+    {
+        MouseController.gameInProgress = false;
+        instance.catSpawner.spawnCats(false);
+    }
+
     //
     // Returns the y position of the lane with the given id
     // Ids range from 1 to 9. 1 is top, 9 is bottom
