@@ -24,9 +24,10 @@ public class CatSpawner : MonoBehaviour
             if (nextCatSpawn < Time.time)
             {
                 nextCatSpawn = Time.time + catSpawnDelay;
-                int randLane = Random.Range(1, 9);
+                //int randLane = Random.Range(1, 9);
+                int laneId = GameManager.level.getNextLane();
                 CatController cc = Instantiate(catPrefab).GetComponent<CatController>();
-                cc.init(Random.Range(1, 3), randLane);
+                cc.init(Random.Range(1, 3), laneId);
             }
         }
     }
