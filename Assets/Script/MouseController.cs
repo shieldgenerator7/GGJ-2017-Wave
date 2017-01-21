@@ -7,8 +7,6 @@ public class MouseController : MonoBehaviour {
     public int laneId;//the id of the lane this mouse occupies
     public string buttonName;//the name of the button that controls this mouse
     public float toySpawnDelay = 0.5f;//the minimum time between toy spawns (seconds)
-    public Vector2 toySpawnVelocity = new Vector2(1000,100);//the velocity at which the toys launch
-    public GameObject toyPrefab;//the prefab for the toy this mouse spawns
     public GameObject tapArea;//the tap area that this mouse responds to
 
     public static bool gameInProgress = true;//mice can shoot toys when the game is in progress
@@ -56,17 +54,10 @@ public class MouseController : MonoBehaviour {
             if (nextToySpawn < Time.time)
             {
                 nextToySpawn = Time.time + toySpawnDelay;
-                spawnToy();
+                ToySpawner.spawnToy(transform.position);
             }
         }
 	}
 
-    public void spawnToy()
-    {
-        GameObject newToy = Instantiate(toyPrefab);
-        ToyChecker tc = newToy.GetComponent<ToyChecker>();
-        tc.init(transform.position);
-        tc.GetComponent<Rigidbody2D>().AddForce(toySpawnVelocity);
-
-    }
+    
 }

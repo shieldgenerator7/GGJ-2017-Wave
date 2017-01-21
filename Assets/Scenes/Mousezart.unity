@@ -481,8 +481,6 @@ MonoBehaviour:
   laneId: 1
   buttonName: NoteE
   toySpawnDelay: 0.5
-  toySpawnVelocity: {x: 1000, y: 100}
-  toyPrefab: {fileID: 1158157173373158, guid: 16523f07410abb848804f1c361fa4120, type: 2}
   tapArea: {fileID: 971824314}
 --- !u!1 &606088224
 GameObject:
@@ -913,6 +911,7 @@ GameObject:
   - component: {fileID: 1838426953}
   - component: {fileID: 1838426952}
   - component: {fileID: 1838426954}
+  - component: {fileID: 1838426955}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -958,6 +957,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catSpawnDelay: 0.5
   catPrefab: {fileID: 1511423376671596, guid: b2651c126c471274e9f91e26624817cf, type: 2}
+--- !u!114 &1838426955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838426951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffd308d0de70f14a892657d9994d0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toySpawnVelocity: {x: 1000, y: 100}
+  toyPrefab: {fileID: 1158157173373158, guid: 16523f07410abb848804f1c361fa4120, type: 2}
+  toy_bear: {fileID: 21300000, guid: 82175e0cf90e9fe4abed8541ed8ac5fb, type: 3}
+  toy_tuna: {fileID: 21300000, guid: 695e1c5db8d13df4892ad9361adbca69, type: 3}
+  toy_duck: {fileID: 21300000, guid: 2c3c71246fb5aaf4ba507170a1407fd6, type: 3}
+  toy_milk: {fileID: 21300000, guid: 5657ab79a6de382459be51145fc93ead, type: 3}
 --- !u!1 &1853490153
 GameObject:
   m_ObjectHideFlags: 0
