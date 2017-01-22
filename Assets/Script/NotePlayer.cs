@@ -10,6 +10,8 @@ public class NotePlayer : MonoBehaviour {
     public static bool playing = false;
     public static float startTime;//the time the playback was started (actually the difference between that and the time of the first note's recording
     public static int currentIndex = 0;//the current note that's being played
+    public static float noteDelay = 0.5f;//how long between each note
+    public static float noteTime = 0;//the next time you can play a note
 
     private AudioSource mew;
 
@@ -23,8 +25,10 @@ public class NotePlayer : MonoBehaviour {
         if (playing)
         {
             Note note = NoteRecorder.notes[currentIndex];
-            if (note.time + startTime < Time.time)//if it's time to play this note
+            //if (note.time + startTime < Time.time)//if it's time to play this note
+            if (Time.time > noteTime)
             {
+                noteTime = Time.time + noteDelay;
                 mew.pitch = CatController.getPitch(note.laneId);
                 mew.Play();
                 currentIndex++;
