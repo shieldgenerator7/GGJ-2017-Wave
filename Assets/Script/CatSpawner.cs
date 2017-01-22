@@ -36,18 +36,22 @@ public class CatSpawner : MonoBehaviour
                 nextCatSpawn = Time.time + catSpawnDelay;
                 //int randLane = Random.Range(1, 9);
                 int laneId = GameManager.level.getNextLane();
-                if (laneId < 1 || laneId > 9)  
+                if (laneId < 0 || laneId > 9)  
                 {
-                    if (laneId != 0)
+                    if (laneId != -1)
                     {
                         Debug.Log("Invalid laneId: " + laneId);//0 is valid (end of level), but anything else is invalid
                     }
                     spawnCats(false);
                     return;
                 }
+                if (laneId == 0)
+                {
+                    return;//don't spawn a cat
+                }
                 GameObject newCat = Instantiate(catPrefab);
                 CatController cc = newCat.GetComponent<CatController>();
-                cc.init(Random.Range(1, 3), laneId);
+                cc.init(Random.Range(1, 3), laneId);//
                 int randomColor = Random.Range(0, colorOptions.Count);
                 Color color = new Color();
                 ColorUtility.TryParseHtmlString(colorOptions[randomColor], out color);

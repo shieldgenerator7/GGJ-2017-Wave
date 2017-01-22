@@ -26,7 +26,7 @@ public class Level
     {
         if (nextSpot == sequence.Length)
         {
-            return 0;//no lane to give out
+            return -1;//no lane to give out
         }
         int nextLane = int.Parse(sequence.Substring(nextSpot,1));
         nextSpot++;

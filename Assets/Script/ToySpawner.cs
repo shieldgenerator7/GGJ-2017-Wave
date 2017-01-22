@@ -62,9 +62,9 @@ public class ToySpawner : MonoBehaviour
         int randSprite = Random.Range(0, TOY_AMOUNT);
         newToy.GetComponent<SpriteRenderer>().sprite = instance.toySpriteList[randSprite];
         //Random Color
-        int randomColor = Random.Range(0, colorOptions.Count);
-        Color color = new Color();
-        ColorUtility.TryParseHtmlString(colorOptions[randomColor], out color);
-        newToy.GetComponent<SpriteRenderer>().color = color;
+        //int randomColor = Random.Range(0, colorOptions.Count);
+        //Color color = new Color();
+        //ColorUtility.TryParseHtmlString(colorOptions[randomColor], out color);
+        //newToy.GetComponent<SpriteRenderer>().color = color;
     }
 }

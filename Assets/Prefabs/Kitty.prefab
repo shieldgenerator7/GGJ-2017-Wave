@@ -63,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 2
 --- !u!61 &61097066941448504
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -175,6 +175,7 @@ MonoBehaviour:
   laneId: 0
   retreating: 0
   mew: {fileID: 8300000, guid: eb12158c15784454a8fdaba7e4cf679e, type: 3}
+  rollSprite: {fileID: 21300000, guid: 27de1a4a56e7d3948a2cbd4d4f8e39b9, type: 3}
 --- !u!212 &212077671246130400
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -206,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 42e415387958d8245baf05bfa736a445, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
