@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour {
         gameInProgress = false;
         betweenLevels = true;
         SceneManager.LoadScene("LevelEnd", LoadSceneMode.Additive);
+        NotePlayer.playback(true);
     }
 
     public static void levelFailed()

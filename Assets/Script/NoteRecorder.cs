@@ -16,6 +16,11 @@ public class NoteRecorder : MonoBehaviour {
     {
         notes.Add(new Note(laneId, Time.time));
     }
+
+    public static void reset()
+    {
+        notes = new List<Note>();
+    }
 }
 
 public class Note
