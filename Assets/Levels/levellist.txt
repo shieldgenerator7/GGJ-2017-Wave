@@ -1,3 +1,6 @@
+TheCanCan.txt
+OdeToJoy.txt
+MyHeartWillGoOn.txt
 Level01.txt
 Level02.txt
 Level03.txt
