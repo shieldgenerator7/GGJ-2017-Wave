@@ -6,7 +6,7 @@ using System.IO;
 
 public class GameManager : MonoBehaviour {
 
-    public float CEILING = 5;//the ceiling off which all lanes "hang off" in terms off finding their y coordinates
+    public float CEILING = 5.0f;//the ceiling off which all lanes "hang off" in terms off finding their y coordinates
 
     public static bool gameInProgress = true;
     public static bool betweenLevels = false;
