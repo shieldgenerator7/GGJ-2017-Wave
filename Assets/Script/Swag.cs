@@ -20,7 +20,7 @@ public class Swag : MonoBehaviour {
 			Debug.Log(hitIt.transform.gameObject.name);
 			if (hitIt) {
 				if (hitIt.transform.gameObject.name == "Swag")
-					Monetizr.Instance.ShowProductWithID ("9920046026");
+					Monetizr.Instance.ShowProductWithID ("9926388170");
 
 			}
 		}

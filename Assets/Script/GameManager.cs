@@ -142,9 +142,11 @@ public class GameManager : MonoBehaviour {
 
     public static void levelFailed()
     {
-        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+		Monetizr.Instance.ShowProductWithID("9926388170");
+        
         gameInProgress = false;
         instance.catSpawner.spawnCats(false);
+		SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 
     //
