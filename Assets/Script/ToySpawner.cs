@@ -37,7 +37,7 @@ public class ToySpawner : MonoBehaviour
         ToyChecker tc = newToy.GetComponent<ToyChecker>();
         tc.init(startPos);
         tc.GetComponent<Rigidbody2D>().AddForce(instance.toySpawnVelocity);
-        int randSprite = Random.Range(0, TOY_AMOUNT - 1);
+        int randSprite = Random.Range(0, TOY_AMOUNT);
         newToy.GetComponent<SpriteRenderer>().sprite = instance.toySpriteList[randSprite];
     }
 }
