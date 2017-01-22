@@ -25,10 +25,13 @@ public class AudioInput : MonoBehaviour {
 		audioBit = GetComponent<AudioSource>();
 		mic = Microphone.devices[0];
 		if(Microphone.IsRecording(mic)==true){
-			Microphone.End (mic);
+			Microphone.End(mic);
 		}
 		audioBit.clip = Microphone.Start(mic, true, 3600,44100);
 		audioBit.loop = true;
+		foreach (string device in Microphone.devices) {
+			Debug.Log("Name: " + device);
+		}
 	//	audioBit.mute = true; //avoid speaker feedback
 		while (!(Microphone.GetPosition(null)>0)){
 			audioBit.Play();
