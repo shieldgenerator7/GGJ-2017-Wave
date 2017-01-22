@@ -37,16 +37,20 @@ public class GameManager : MonoBehaviour {
         file.Close();
         loadLevel(currentLevelIndex);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (!gameInProgress)
         {
-            if (!gameInProgress)
+            bool keyInput = Input.GetKeyDown(KeyCode.Return);
+            bool mouseInput = Input.GetMouseButtonUp(0);
+            bool touchInput = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
+            if (keyInput || mouseInput || touchInput)
             {
                 if (betweenLevels)
                 {
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour {
                     gameInProgress = true;
                     loadLevel(currentLevelIndex + 1);
                     instance.catSpawner.spawnCats(true);
+                    NoteRecorder.reset();
+                    NotePlayer.playback(false);
                 }
                 else {
                     resetLevel();

@@ -43,11 +43,7 @@ public class NotePlayer : MonoBehaviour {
         {
             currentIndex = 0;
             startTime = Time.time - NoteRecorder.notes[0].time;
-            startTime++;//add a one-second delay
-        }
-        else
-        {
-            NoteRecorder.reset();
+            startTime += 1.0f;//add a delay (seconds)
         }
     }
 }
