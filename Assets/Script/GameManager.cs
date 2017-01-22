@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     {
         DontDestroyOnLoad(gameObject);
         instance = this;
+        Input.simulateMouseWithTouches = false;
         catSpawner = GetComponent<CatSpawner>();
         level = new Level();
         //Load level names

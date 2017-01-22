@@ -36,7 +36,7 @@ public class MouseController : MonoBehaviour {
         bool touchInput = false;
         if (Input.touchCount > 0)
         {
-            for (int i=0; i<Input.touchCount; i++)
+            for (int i = 0; i < Input.touchCount; i++)
             {
                 Vector3 camPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
                 if (tapArea.GetComponent<BoxCollider2D>().OverlapPoint(camPoint))
