@@ -10,10 +10,20 @@ public class CatSpawner : MonoBehaviour
     private float nextCatSpawn = 0;//the soonest a cat can spawn
     private bool shouldSpawnCats = true;
 
+    private List<string> colorOptions = new List<string>();
+
     // Use this for initialization
     void Start()
     {
-
+        colorOptions.Add("#FFB37C");
+        colorOptions.Add("#6D6D6D");
+        colorOptions.Add("#FCFCFC");
+        colorOptions.Add("#FFB249");
+        colorOptions.Add("#6D6D86");
+        colorOptions.Add("#F7F7DE");
+        colorOptions.Add("#FFECB5");
+        colorOptions.Add("#B74900");
+        colorOptions.Add("#A0A0A0");
     }
 
     // Update is called once per frame
@@ -35,8 +45,13 @@ public class CatSpawner : MonoBehaviour
                     spawnCats(false);
                     return;
                 }
-                CatController cc = Instantiate(catPrefab).GetComponent<CatController>();
+                GameObject newCat = Instantiate(catPrefab);
+                CatController cc = newCat.GetComponent<CatController>();
                 cc.init(Random.Range(1, 3), laneId);
+                int randomColor = Random.Range(0, colorOptions.Count);
+                Color color = new Color();
+                ColorUtility.TryParseHtmlString(colorOptions[randomColor], out color);
+                newCat.GetComponent<SpriteRenderer>().color = color;
             }
         }
     }
