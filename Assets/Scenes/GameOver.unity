@@ -227,7 +227,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.8, y: 10.24}
+  m_Size: {x: 14.05, y: 10.35}
 --- !u!114 &2036950988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2df3e40eeef1c364d886424cc4a1629f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba8c4b6d3029c9441bd3ff6e6a043858, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

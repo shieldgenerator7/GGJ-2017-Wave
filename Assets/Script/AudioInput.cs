@@ -12,24 +12,17 @@ public class AudioInput : MonoBehaviour {
 	AudioSource audioBit;
 	public float[] sample = new float[20];
 
-
-
-
 	// Use this for initialization
 	public void Start () {
 		
 		audioBit = GetComponent<AudioSource>();
 		mic = Microphone.devices[0];
 		audioBit.clip = Microphone.Start(mic, true, 3600,44100);
-
 		audioBit.loop = true;
 	//	audioBit.mute = true; //avoid speaker feedback
-
 		while (!(Microphone.GetPosition(null)>0)){
 			audioBit.Play();
-
 		}
-
 	}
 
 	// Update is called once per frame
@@ -40,6 +33,14 @@ public class AudioInput : MonoBehaviour {
 		vol = AverageVol()*VolBoost;
 		pitch = Mathf.RoundToInt(vol);
 
+		switch (pitch) {
+		case 9:
+			//code to attack top cat
+			break;
+		default :
+			break;
+		}
+
 
 	}	
 	float AverageVol(){
@@ -47,7 +48,6 @@ public class AudioInput : MonoBehaviour {
 		float snip = 0f;
 		GetComponent<AudioSource>().GetOutputData (sample, 0);
 		foreach (float i in sample) {
-			
 			snip += Mathf.Abs (i);
 		}
 		return snip / size;
