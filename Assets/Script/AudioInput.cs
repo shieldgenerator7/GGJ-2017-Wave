@@ -57,6 +57,10 @@ public class AudioInput : MonoBehaviour {
 	}
 
 	void AudioFire(){
+        if (!GameManager.gameInProgress)
+        {
+            return;//don't do anything if the game's not in progress
+        }
 		audioBit = GetComponent<AudioSource> ();
 		time = Microphone.GetPosition (mic);
 		vol = AverageVol()*VolBoost;
