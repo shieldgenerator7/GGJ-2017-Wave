@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
     public static bool gameInProgress = true;
     public static bool betweenLevels = false;
+    public static bool gameWon = false;//set to true after all levels have been completed
     public string levelListFileName = "levellist.txt";
     public string levelDirectory = "Assets/Levels/";
 
@@ -57,12 +58,25 @@ public class GameManager : MonoBehaviour {
                 {
                     if (Time.time > earliestNextLevelTrigger) {
                         SceneManager.UnloadSceneAsync("LevelEnd");
-                        gameInProgress = true;
-                        loadLevel(currentLevelIndex + 1);
-                        instance.catSpawner.spawnCats(true);
                         NoteRecorder.reset();
                         NotePlayer.playback(false);
+                        if (currentLevelIndex < levelFileNames.Count - 1)
+                        {//another level to continue
+                            gameInProgress = true;
+                            loadLevel(currentLevelIndex + 1);
+                            instance.catSpawner.spawnCats(true);
+                        }
+                        else
+                        {//all levels done, game won!
+                            gameWon = true;
+                            betweenLevels = false;
+                            SceneManager.LoadScene("GameWon", LoadSceneMode.Additive);
+                        }
                     }
+                }
+                else if (gameWon)
+                {//proceed to start screen
+                    SceneManager.LoadScene("Title", LoadSceneMode.Single);
                 }
                 else {
                     resetLevel();

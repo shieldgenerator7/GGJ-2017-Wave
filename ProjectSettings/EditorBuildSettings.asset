@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Mousezart.unity
   - enabled: 1
     path: Assets/Scenes/LevelEnd.unity
+  - enabled: 1
+    path: Assets/Scenes/GameWon.unity
