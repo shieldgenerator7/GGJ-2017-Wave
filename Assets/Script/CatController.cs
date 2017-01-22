@@ -44,7 +44,9 @@ public class CatController : MonoBehaviour {
         NoteRecorder.recordNote(laneId);
         GameManager.checkLevelEnd();
         AudioSource mew = GetComponent<AudioSource>();
-        mew.pitch += 5 - laneId;
+        float high = 2.0f;//the highest pitch on the scale
+        float low = 0.5f;//the lowest pitch on the scale
+        mew.pitch = (high+ low)-(((laneId-1)*(high-low)/8)+low);//convert (1 thru 9) to (0.5 thru 2)
         mew.Play();
     }
 
