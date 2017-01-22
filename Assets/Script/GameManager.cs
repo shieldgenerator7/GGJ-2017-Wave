@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour {
     public float CEILING = 5;//the ceiling off which all lanes "hang off" in terms off finding their y coordinates
 
     public static bool gameInProgress = true;
-    public string levelListFileName = "levellist2.txt";
+    public static bool betweenLevels = false;
+    public string levelListFileName = "levellist.txt";
     public string levelDirectory = "Assets/Levels/";
 
     private static GameManager instance;
@@ -46,7 +47,16 @@ public class GameManager : MonoBehaviour {
         {
             if (!gameInProgress)
             {
-                resetLevel();
+                if (betweenLevels)
+                {
+                    SceneManager.UnloadSceneAsync("LevelEnd");
+                    gameInProgress = true;
+                    loadLevel(currentLevelIndex + 1);
+                    instance.catSpawner.spawnCats(true);
+                }
+                else {
+                    resetLevel();
+                }
             }
         }
     }
@@ -60,6 +70,7 @@ public class GameManager : MonoBehaviour {
     public static void resetLevel()
     {
         SceneManager.LoadScene("Mousezart", LoadSceneMode.Single);
+        loadLevel(currentLevelIndex);
         gameInProgress = true;
         instance.catSpawner.spawnCats(true);
         //despawn all cats
@@ -70,6 +81,37 @@ public class GameManager : MonoBehaviour {
                 Destroy(go);
             }
         }
+    }
+
+    public static void checkLevelEnd()
+    {
+        if (level.hasNextLane())
+        {
+            return;//the level's not over yet
+        }
+        bool end = true;
+        foreach (GameObject go in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (go.tag == "Cat")
+            {
+                CatController cc = go.GetComponent<CatController>();
+                if (!cc.retreating)
+                {
+                    end = false;
+                }
+            }
+        }
+        if (end)
+        {
+            levelWon();
+        }
+    }
+
+    public static void levelWon()
+    {
+        gameInProgress = false;
+        betweenLevels = true;
+        SceneManager.LoadScene("LevelEnd", LoadSceneMode.Additive);
     }
 
     public static void levelFailed()

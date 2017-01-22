@@ -26,6 +26,15 @@ public class CatSpawner : MonoBehaviour
                 nextCatSpawn = Time.time + catSpawnDelay;
                 //int randLane = Random.Range(1, 9);
                 int laneId = GameManager.level.getNextLane();
+                if (laneId < 1 || laneId > 9)  
+                {
+                    if (laneId != 0)
+                    {
+                        Debug.Log("Invalid laneId: " + laneId);//0 is valid (end of level), but anything else is invalid
+                    }
+                    spawnCats(false);
+                    return;
+                }
                 CatController cc = Instantiate(catPrefab).GetComponent<CatController>();
                 cc.init(Random.Range(1, 3), laneId);
             }

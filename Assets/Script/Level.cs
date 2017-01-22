@@ -17,6 +17,11 @@ public class Level
         nextSpot = 0;
     }
 
+    public bool hasNextLane()
+    {
+        return nextSpot < sequence.Length;
+    }
+
     public int getNextLane()
     {
         if (nextSpot == sequence.Length)
