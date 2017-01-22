@@ -12,6 +12,8 @@ public class CatController : MonoBehaviour {
 
     public const int FINISH_LINE = -4;//the x coordinate of the finish line of the cats, where the mouse holes are
     public const int RETREAT_LINE = 7;//the x coordinate when the cat goes off the screen
+
+    private GameObject toy;//the toy that it takes home with it
     
 	// Use this for initialization
 	void Start () {
@@ -31,14 +33,27 @@ public class CatController : MonoBehaviour {
         {
             GameManager.levelFailed();
         }
-        else if (retreating && transform.position.x > RETREAT_LINE)
+        if (retreating)
         {
-            Destroy(gameObject);//kitty has successfully retreated
+            if (transform.position.x > RETREAT_LINE)
+            {
+                Destroy(gameObject);//kitty has successfully retreated
+                Destroy(toy);
+            }
+            else
+            {
+                if (toy != null)
+                {
+                    toy.transform.rotation = transform.rotation;
+                    toy.transform.position = transform.position;
+                }
+            }
         }
 	}
 
-    public void takeHit()//kitty has toy, so it retreats
+    public void takeHit(GameObject newToy)//kitty has toy, so it retreats
     {
+        toy = newToy;
         retreating = true;
         GetComponent<BoxCollider2D>().enabled = false;
         speed *= -2;
@@ -48,6 +63,7 @@ public class CatController : MonoBehaviour {
         mew.pitch = getPitch(laneId);
         mew.Play();
         GetComponent<SpriteRenderer>().sprite = rollSprite;
+        GetComponent<SpriteRenderer>().sortingOrder = 0;
         GetComponent<Rigidbody2D>().AddTorque(300*speed);
     }
 
@@ -64,8 +80,8 @@ public class CatController : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Toy")
         {
-            takeHit();
-            Destroy(coll.gameObject);
+            takeHit(coll.gameObject);
+            Destroy(coll.gameObject.GetComponent<BoxCollider2D>());
         }
     }
 }
