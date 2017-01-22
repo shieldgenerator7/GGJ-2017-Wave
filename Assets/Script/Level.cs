@@ -12,8 +12,7 @@ public class Level
     //Loads a level sequence from the given filename
     public void loadLevel(string filename)
     {
-        //File level = new File(filename);
-        sequence = File.ReadAllText(filename);
+        sequence = Resources.Load<TextAsset>(filename).text;
         nextSpot = 0;
     }
 

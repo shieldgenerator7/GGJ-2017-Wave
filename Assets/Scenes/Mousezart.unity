@@ -938,8 +938,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CEILING: 5
-  levelListFileName: levellist.txt
-  levelDirectory: Assets/Levels/
+  levelListFileName: levellist
+  levelDirectory: Levels/
 --- !u!4 &1838426953
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,7 +1303,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1327,7 +1327,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &2087881646
 GameObject:
   m_ObjectHideFlags: 0

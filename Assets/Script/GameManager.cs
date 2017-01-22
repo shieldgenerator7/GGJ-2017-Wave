@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour {
     public static bool gameInProgress = true;
     public static bool betweenLevels = false;
     public static bool gameWon = false;//set to true after all levels have been completed
-    public string levelListFileName = "levellist.txt";
-    public string levelDirectory = "Assets/Levels/";
+    public string levelListFileName = "levellist";
+    public string levelDirectory = "Levels/";
 
     private static GameManager instance;
     private CatSpawner catSpawner;//the script that spawns cats
@@ -30,13 +30,11 @@ public class GameManager : MonoBehaviour {
         catSpawner = GetComponent<CatSpawner>();
         level = new Level();
         //Load level names
-        System.IO.StreamReader file = new System.IO.StreamReader(levelDirectory+levelListFileName);//2017-01-21: copied from https://msdn.microsoft.com/en-us/library/aa287535(v=vs.71).aspx
-        string line;
-        while ((line = file.ReadLine()) != null)
+        TextAsset file = Resources.Load<TextAsset>(levelDirectory+ levelListFileName);
+        foreach (string line in file.text.Split('\n'))
         {
-            levelFileNames.Add(levelDirectory+line);
+            levelFileNames.Add(levelDirectory + line.Trim());
         }
-        file.Close();
         loadLevel(currentLevelIndex);
     }
 
