@@ -68,7 +68,8 @@ public class TitleControl : MonoBehaviour {
 				else if (hitIt.transform.gameObject.name == "Level")
 					LevelClicked ();
 				else if(hitIt.transform.gameObject.name == "Exit")
-					Application.Quit();
+					//Application.Quit();
+				SceneManager.LoadScene ("GameOver", LoadSceneMode.Single);
 			}
 
 		}
