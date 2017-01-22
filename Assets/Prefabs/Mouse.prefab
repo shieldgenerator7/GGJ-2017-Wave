@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4458978850679064}
   - component: {fileID: 61500584571984876}
-  - component: {fileID: 114424540476010604}
   m_Layer: 0
   m_Name: TapArea
   m_TagString: Untagged
@@ -86,17 +85,6 @@ BoxCollider2D:
   m_Offset: {x: 4.9467797, y: 0}
   serializedVersion: 2
   m_Size: {x: 21.89666, y: 1}
---- !u!114 &114424540476010604
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1017296311371230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114435186220200976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,10 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8042d729d66398349822d6eb47041c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toyPrefab: {fileID: 1158157173373158, guid: 16523f07410abb848804f1c361fa4120, type: 2}
   laneId: 0
-  toySpawnDelay: 0.5
   buttonName: NoteE
+  toySpawnDelay: 0.5
   tapArea: {fileID: 1017296311371230}
 --- !u!212 &212769331460506920
 SpriteRenderer:

@@ -41,6 +41,7 @@ public class CatController : MonoBehaviour {
         GetComponent<BoxCollider2D>().enabled = false;
         speed *= -2;
         NoteRecorder.recordNote(laneId);
+        GameManager.checkLevelEnd();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
