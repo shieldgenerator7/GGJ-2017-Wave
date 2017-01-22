@@ -31,6 +31,7 @@ public class NotePlayer : MonoBehaviour {
                 noteTime = Time.time + noteDelay;
                 mew.pitch = CatController.getPitch(note.laneId);
                 mew.Play();
+                CatTongueController.setPosition(note.laneId);
                 currentIndex++;
                 if (currentIndex >= NoteRecorder.notes.Count)
                 {
