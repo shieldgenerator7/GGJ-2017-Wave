@@ -51,7 +51,7 @@ public class CatSpawner : MonoBehaviour
                 }
                 GameObject newCat = Instantiate(catPrefab);
                 CatController cc = newCat.GetComponent<CatController>();
-                cc.init(1.5f, laneId);// Random.Range(1, 3), laneId);//
+                cc.init(Random.Range(1, 3), laneId);//
                 int randomColor = Random.Range(0, colorOptions.Count);
                 Color color = new Color();
                 ColorUtility.TryParseHtmlString(colorOptions[randomColor], out color);
