@@ -49,12 +49,16 @@ public class MouseController : MonoBehaviour {
         //Spawn Toy
 		if (buttonInput || mouseInput || touchInput)
         {
-            if (nextToySpawn < Time.time)
-            {
-                nextToySpawn = Time.time + toySpawnDelay;
-                ToySpawner.spawnToy(transform.position);
-            }
+			SpawnToy ();
         }
+
+	}
+	public void SpawnToy(){
+		if (nextToySpawn < Time.time)
+		{
+			nextToySpawn = Time.time + toySpawnDelay;
+			ToySpawner.spawnToy(transform.position);
+		}
 	}
 
     
