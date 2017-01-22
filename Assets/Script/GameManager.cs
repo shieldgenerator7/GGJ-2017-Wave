@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     private static List<string> levelFileNames = new List<string>();//the names of the files that contain a level
     private static int currentLevelIndex = 0;//the index in the level list of the current level
     public static Level level;//the only level needed, because it can be reused
+    private static float earliestNextLevelTrigger;//the earliest time the song playback can be skipped (to keep from accidentially skipping the playback)
 
     // Use this for initialization
     void Start()
@@ -52,14 +53,16 @@ public class GameManager : MonoBehaviour {
             bool touchInput = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
             if (keyInput || mouseInput || touchInput)
             {
-                if (betweenLevels)
+                if (betweenLevels) 
                 {
-                    SceneManager.UnloadSceneAsync("LevelEnd");
-                    gameInProgress = true;
-                    loadLevel(currentLevelIndex + 1);
-                    instance.catSpawner.spawnCats(true);
-                    NoteRecorder.reset();
-                    NotePlayer.playback(false);
+                    if (Time.time > earliestNextLevelTrigger) {
+                        SceneManager.UnloadSceneAsync("LevelEnd");
+                        gameInProgress = true;
+                        loadLevel(currentLevelIndex + 1);
+                        instance.catSpawner.spawnCats(true);
+                        NoteRecorder.reset();
+                        NotePlayer.playback(false);
+                    }
                 }
                 else {
                     resetLevel();
@@ -120,6 +123,7 @@ public class GameManager : MonoBehaviour {
         betweenLevels = true;
         SceneManager.LoadScene("LevelEnd", LoadSceneMode.Additive);
         NotePlayer.playback(true);
+        earliestNextLevelTrigger = Time.time + 2.0f;//put a delay on how long until you can go to next level (seconds)
     }
 
     public static void levelFailed()
