@@ -369,7 +369,7 @@ SpriteRenderer:
   m_SortingLayerID: -1803245701
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ba8c4b6d3029c9441bd3ff6e6a043858, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d18fe901a5397ee4c876bd721ae4af47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1247,6 +1247,7 @@ MonoBehaviour:
   - 0
   Mouser: {fileID: 0}
   mouseNote: {fileID: 0}
+  range: 0
 --- !u!82 &1920002005
 AudioSource:
   m_ObjectHideFlags: 0

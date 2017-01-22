@@ -24,8 +24,8 @@ public class AudioInput : MonoBehaviour {
 		float[] sample = new float[sampleSize];
 		audioBit = GetComponent<AudioSource>();
 		mic = Microphone.devices[0];
-		if(Microphone.IsRecording()==true){
-			Microphone.End ();
+		if(Microphone.IsRecording(mic)==true){
+			Microphone.End(mic);
 		}
 		audioBit.clip = Microphone.Start(mic, true, 3600,44100);
 		audioBit.loop = true;
