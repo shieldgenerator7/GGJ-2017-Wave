@@ -18,6 +18,7 @@ public class ToySpawner : MonoBehaviour
     public Sprite toy_yarn;
     private List<Sprite> toySpriteList;
     private static int TOY_AMOUNT = 9;
+    private static List<string> colorOptions = new List<string>();
 
     private static ToySpawner instance;
 
@@ -25,6 +26,7 @@ public class ToySpawner : MonoBehaviour
     void Start () {
         instance = this;
         toySpriteList = new List<Sprite>();
+        //Toy Options
         toySpriteList.Add(toy_bear);
         toySpriteList.Add(toy_bunny);
         toySpriteList.Add(toy_butterfly);
@@ -34,6 +36,16 @@ public class ToySpawner : MonoBehaviour
         toySpriteList.Add(toy_mouse);
         toySpriteList.Add(toy_tuna);
         toySpriteList.Add(toy_yarn);
+        //Color Options
+        colorOptions.Add("#FFEB56");
+        colorOptions.Add("#FF7700");
+        colorOptions.Add("#FCFCFC");
+        colorOptions.Add("#674BCC");
+        colorOptions.Add("#FF6060");
+        colorOptions.Add("#D88F3C");
+        colorOptions.Add("#BCBCBC");
+        colorOptions.Add("#00A2FF");
+        colorOptions.Add("#00A010");
     }
 	
 	// Update is called once per frame
@@ -49,5 +61,10 @@ public class ToySpawner : MonoBehaviour
         tc.GetComponent<Rigidbody2D>().AddForce(instance.toySpawnVelocity);
         int randSprite = Random.Range(0, TOY_AMOUNT);
         newToy.GetComponent<SpriteRenderer>().sprite = instance.toySpriteList[randSprite];
+        //Random Color
+        int randomColor = Random.Range(0, colorOptions.Count);
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(colorOptions[randomColor], out color);
+        newToy.GetComponent<SpriteRenderer>().color = color;
     }
 }
