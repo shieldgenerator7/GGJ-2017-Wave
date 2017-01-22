@@ -7,6 +7,7 @@ public class CatController : MonoBehaviour {
     public float speed = 2;//the rate the cat moves across the floor towards the mouse holes
     public int laneId;//the lane that the cat will be in. This determines note of this cat
     public bool retreating = false;//whether the cat has been hit and is retreating
+    public AudioClip mew;//the sound to play when hit
 
     public const int FINISH_LINE = -4;//the x coordinate of the finish line of the cats, where the mouse holes are
     public const int RETREAT_LINE = 7;//the x coordinate when the cat goes off the screen
@@ -42,6 +43,9 @@ public class CatController : MonoBehaviour {
         speed *= -2;
         NoteRecorder.recordNote(laneId);
         GameManager.checkLevelEnd();
+        AudioSource mew = GetComponent<AudioSource>();
+        mew.pitch += 5 - laneId;
+        mew.Play();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
