@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d06cb014c3ae4d438ffe7dc1cf8f8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CEILING: 5
+  CEILING: 4.8
   levelListFileName: levellist
   levelDirectory: Levels/
 --- !u!4 &1838426953
