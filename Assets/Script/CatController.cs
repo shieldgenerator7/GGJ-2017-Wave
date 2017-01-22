@@ -8,6 +8,7 @@ public class CatController : MonoBehaviour {
     public int laneId;//the lane that the cat will be in. This determines note of this cat
     public bool retreating = false;//whether the cat has been hit and is retreating
     public AudioClip mew;//the sound to play when hit
+    public Sprite rollSprite;//the sprite to use when they roll away
 
     public const int FINISH_LINE = -4;//the x coordinate of the finish line of the cats, where the mouse holes are
     public const int RETREAT_LINE = 7;//the x coordinate when the cat goes off the screen
@@ -46,6 +47,8 @@ public class CatController : MonoBehaviour {
         AudioSource mew = GetComponent<AudioSource>();
         mew.pitch = getPitch(laneId);
         mew.Play();
+        GetComponent<SpriteRenderer>().sprite = rollSprite;
+        GetComponent<Rigidbody2D>().AddTorque(300*speed);
     }
 
     public static float getPitch(int laneId)
