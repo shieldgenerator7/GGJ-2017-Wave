@@ -20,7 +20,7 @@ public class Swag : MonoBehaviour {
 			Debug.Log(hitIt.transform.gameObject.name);
 			if (hitIt) {
 				if (hitIt.transform.gameObject.name == "Swag")
-					Monetizr.Instance.ShowProductWithID ("9926388170");
+					Application.OpenURL ("http://instagramprinted.myshopify.com/products/copy-of-ggj-t-shirt?variant=36586019722");
 
 			}
 		}
